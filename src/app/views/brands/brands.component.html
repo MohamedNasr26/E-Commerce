@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row justify-content-center" *ngIf="brandsList.length > 0 ; else noData">
+        <div class="col-12">
+            <h1 class="text-center text-xl font-bold mt-5">
+                {{'CATEGORIES.BRANDS'|translate}}
+            </h1>
+        </div>
+        <div class="col-12 sm:col-6 lg:col-4 xl:col-3" *ngFor="let brand of brandsList">
+            <a [routerLink]="['brandDetails',brand.name , brand._id]">
+                <div class="card flex justify-content-center">
+                    <p-card [header]="brand.name">
+                        <ng-template pTemplate="header">
+                            <img alt="Card" [src]="brand.image" />
+                        </ng-template>
+                    </p-card>
+                </div>
+            </a>
+        </div>
+    </div>
+    <ng-template #noData>
+        <app-data-not-found></app-data-not-found>
+    </ng-template>
+</div>

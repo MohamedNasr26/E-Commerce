@@ -1,0 +1,116 @@
+<div class="register">
+    <div class="container p-0">
+        <div class="welcome-box">
+            <h2>{{'REGISTER.WELCOME_TITLE'|translate}}</h2>
+            <p>{{'REGISTER.WELCOME_DESC'|translate}}</p>
+            <a routerLink="/login" class="btn-main">{{'FORM.SIGN_IN'|translate}}<i class="pi pi-sign-in mx-1"></i></a>
+        </div>
+        <div class="input-box">
+            <h1>{{'REGISTER.CREATE_ACOUNT'|translate}}</h1>
+            <div class="social-login">
+                <a href="https://www.facebook.com/elzamalkawy263" target="_blank" class="social-btn facebook-btn">
+                    <i class="pi pi-globe"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mohamed-nasr-143ba3327/" target="_blank" class="social-btn linkedin-btn">
+                    <i class="pi pi-linkedin"></i>
+                </a>
+                <a href="https://github.com/MohamedNasr26" target="_blank" class="social-btn github-btn">
+                    <i class="pi pi-github"></i>
+                </a>
+            </div>
+            <form [formGroup]="registerForm" (ngSubmit)="register(registerForm)">
+                <div class="form-group">
+                    <span [ngClass]="lang=='ar'?'p-input-icon-right':'p-input-icon-left'" class="p-float-label">
+                        <i class="pi pi-user"></i>
+                        <input type="text" pInputText pAutoFocus [autofocus]="true" id="name" formControlName="name"/>
+                        <label htmlFor="name">{{'FORM.NAME'|translate}}</label>
+                    </span>
+                    <div class="alert alert-danger mb-1 p-0" *ngIf="form['name']?.errors && (form['name']?.dirty || form['name']?.touched)">
+                        <ul class="mb-0">
+                            <li *ngIf="form['name']?.getError('required')">{{'FORM.VALIDATORS.REQUIRED' |translate}}</li>
+                            <li *ngIf="form['name']?.getError('minlength')">{{'FORM.VALIDATORS.MINLENGTH' |translate}} 3</li>
+                            <li *ngIf="form['name']?.getError('maxlength')">{{'FORM.VALIDATORS.MAXLENGTH' |translate}} 20</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span [ngClass]="lang=='ar'?'p-input-icon-right':'p-input-icon-left'" class="p-float-label">
+                        <i class="pi pi-envelope"></i>
+                        <input type="email" pInputText id="email" formControlName="email" />
+                        <label htmlFor="email">{{'FORM.EMAIL'|translate}}</label>
+                    </span>
+                    <div class="alert alert-danger mb-1 p-0" *ngIf="form['email']?.errors && (form['email']?.dirty || form['email']?.touched)">
+                        <ul class="mb-0">
+                            <li *ngIf="form['email']?.errors?.['required']">{{'FORM.VALIDATORS.REQUIRED' |translate}}</li>
+                            <li *ngIf="form['email']?.errors?.['email']">{{'FORM.VALIDATORS.NOT_VALID_EMAIL' |translate}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span [ngClass]="lang=='ar'?'p-input-icon-right':'p-input-icon-left'" class="p-float-label">
+                        <i class="pi pi-lock"></i>
+                        <p-password id="password" formControlName="password"  [toggleMask]="true"></p-password>
+                        <label htmlFor="password">{{'FORM.PASSWROD'|translate}}</label>
+                    </span>
+                    <div class="alert alert-danger mb-1 p-0" *ngIf="form['password']?.errors && (form['password']?.dirty || form['password']?.touched)">
+                        <ul class="mb-0">
+                            <li *ngIf="form['password']?.errors?.['required']">{{'FORM.VALIDATORS.REQUIRED' |translate}}</li>
+                            <li *ngIf="form['password']?.errors?.['pattern']">{{'FORM.VALIDATORS.PASSWORD_PATTERN' |translate}}
+                                <ul>
+                                    <li>{{'FORM.VALIDATORS.PASSWORD_PATTERN1' |translate}}</li>
+                                    <li>{{'FORM.VALIDATORS.PASSWORD_PATTERN2' |translate}}</li>
+                                    <li>{{'FORM.VALIDATORS.PASSWORD_PATTERN3' |translate}}</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span [ngClass]="lang=='ar'?'p-input-icon-right':'p-input-icon-left'" class="p-float-label">
+                        <i class="pi pi-lock"></i>
+                        <p-password id="rePassword" formControlName="rePassword"  [toggleMask]="true"></p-password>
+                        <label htmlFor="rePassword">{{'FORM.RE_PASSWORD'|translate}}</label>
+                    </span>
+                    <div class="alert alert-danger mb-1 p-0" *ngIf="form['rePassword']?.errors && (form['rePassword']?.dirty || form['rePassword']?.touched)">
+                        <ul class="mb-0">
+                            <li *ngIf="form['rePassword']?.errors?.['required']">{{'FORM.VALIDATORS.REQUIRED' |translate}}</li>
+                            <li *ngIf="form['rePassword']?.errors?.['pattern']"> {{'FORM.VALIDATORS.PASSWORD_PATTERN' |translate}}
+                                <ul>
+                                    <li>{{'FORM.VALIDATORS.PASSWORD_PATTERN1' |translate}}</li>
+                                    <li>{{'FORM.VALIDATORS.PASSWORD_PATTERN2' |translate}}</li>
+                                    <li>{{'FORM.VALIDATORS.PASSWORD_PATTERN3' |translate}}</li>
+                                </ul>
+                            </li>
+                            <li *ngIf="form['rePassword']?.errors?.['compare']"> {{'FORM.VALIDATORS.PASSWORD_NOT_MATCH' |translate}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span [ngClass]="lang=='ar'?'p-input-icon-right':'p-input-icon-left'" class="p-float-label">
+                        <i class="pi pi-phone"></i>
+                        <p-inputMask type="tel" mask="019-99999999" placeholder="059-99999999" id="phone" formControlName="phone"></p-inputMask>
+                        <label htmlFor="phone">{{'FORM.PHONE'|translate}}</label>
+                    </span>
+                    <div class="alert alert-danger mb-1 p-0" *ngIf="form['phone']?.errors && (form['phone']?.dirty || form['phone']?.touched)">
+                        <ul class="mb-0">
+                            <li *ngIf="form['phone']?.errors?.['required']">{{'FORM.VALIDATORS.REQUIRED' |translate}}</li>
+                            <li *ngIf="form['phone']?.errors?.['pattern']">{{'FORM.VALIDATORS.NOT_VALID_PHONE' |translate}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-main" [disabled]="registerForm.invalid || isLoading">
+                    {{'FORM.SIGN_UP'|translate}}  <i *ngIf="isLoading" class="pi pi-spin pi-spinner mx-1"></i><i *ngIf="!isLoading" class="pi pi-user-plus mx-1"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- <p-dialog class="errorDialog" header="Header" [(visible)]="visibleDialog" [style]="{ width: '25vw'}" [modal]="true" [maximizable]="false" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="header">
+        <span class="text-xl font-bold">{{'FORM.DIALOG_MESSAGE.ERROR_MESSAGE'|translate}}</span>
+    </ng-template>
+    <p *ngIf="errorMsg">{{errorMsg}}</p>
+    <ng-template pTemplate="footer">
+        <p-button (click)="visibleDialog = false" label="{{'FORM.DIALOG_MESSAGE.OK'|translate}}"></p-button>
+    </ng-template>
+</p-dialog> -->

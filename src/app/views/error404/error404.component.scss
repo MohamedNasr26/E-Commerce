@@ -1,0 +1,21 @@
+@import '../../../styles.scss';
+img{
+    // width: 45%;
+    max-height: 60vh;
+}
+p{
+    text-align: center;
+}
+button{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: $mainColor;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}

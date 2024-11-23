@@ -1,0 +1,274 @@
+@import "./../../../styles.scss";
+// ============= Form ===============
+.form-group {
+  margin-bottom: 15px;
+  span {
+    i {
+      z-index: 9 !important;
+    }
+  }
+  .alert {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    ul {
+      li {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.p-inputtext {
+  width: 100% !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  &:enabled:focus {
+    box-shadow: none !important;
+  }
+}
+.p-float-label label {
+  top: 0 !important;
+  background-color: #fff !important;
+  padding: 0 4px !important;
+  width: fit-content !important;
+
+  i {
+    font-size: 10px;
+  }
+}
+.p-float-label label:lang(ar) {
+  right: 0.75rem !important;
+  left: unset !important;
+}
+.p-float-label label:lang(en) {
+  left: 0.75rem !important;
+  right: unset !important;
+}
+.p-input-icon-left,
+.p-input-icon-right {
+  width: 100% !important;
+}
+.p-inputmask:lang(ar) {
+  padding-right: 2.5rem !important;
+}
+.p-inputmask:lang(en) {
+  padding-left: 2.5rem !important;
+}
+.p-input-icon-right > .p-inputtext:lang(ar) {
+  padding-right: 2.5rem !important;
+}
+.p-input-icon-right > .p-inputtext:lang(en) {
+  padding-left: 2.5rem !important;
+}
+.p-inputtext.ng-dirty.ng-invalid,
+.p-inputtext.ng-invalid.ng-touched,
+.p-elementt.ng-dirty.ng-invalid .p-inputmask,
+.p-element.ng-invalid.ng-touched .p-inputmask,
+.p-password-mask.ng-dirty.ng-invalid .p-inputtext,
+.p-password-mask.ng-invalid.ng-touched .p-inputtext {
+  border-color: #e24c4c;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.p-password-mask eyeicon:lang(ar) {
+  right: unset !important;
+  left: 0.75rem !important;
+}
+.p-password-mask eyeicon:lang(en) {
+  right: 0.75rem !important;
+  left: unset !important;
+}
+.p-password-mask eyeslashicon:lang(ar) {
+  right: unset !important;
+  left: 0.75rem !important;
+}
+.p-password-mask eyeslashicon:lang(en) {
+  right: 0.75rem !important;
+  left: unset !important;
+}
+app-login .p-password-mask .p-password-panel {
+  display: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pi-spin {
+    animation-duration: 1s !important;
+    animation-iteration-count: infinite !important;
+  }
+}
+// ---Dialog ----
+.errorDialog {
+  .p-dialog {
+    .p-dialog-header {
+      color: #721c24;
+      background: #f8d7da;
+      border-color: #f5c6cb;
+      padding: 0.5rem;
+      font-family: $mainFont;
+      font-weight: bold;
+      .p-dialog-header-icon {
+        color: #721c24;
+        font-weight: bold;
+      }
+    }
+    .p-dialog-content {
+      text-align: center;
+      padding: 0.5rem;
+    }
+    .p-dialog-footer {
+      padding: 0.5rem;
+      text-align: end;
+      button {
+        background: $mainColor;
+        padding: 6px 12px;
+        color: #fff;
+        font-family: $mainFont;
+      }
+    }
+  }
+}
+// ---- Toast -----
+.p-toast-message-content {
+  direction: ltr !important;
+
+  .p-toast-message-text {
+    font-family: $mainFont;
+  }
+}
+// =================== End Form ===================
+
+// ============== Data View ==============
+.p-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.p-dataview .p-dataview-header {
+  background-color: transparent !important;
+  border: none !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+.p-dataview.p-dataview-list .p-dataview-content > .p-grid > div {
+  border: none !important;
+}
+.p-dataview-layout-options {
+  display: flex;
+}
+.p-dataview-layout-options:lang(ar) {
+  flex-direction: row-reverse;
+}
+.p-dataview-layout-options:lang(en) {
+  flex-direction: row;
+}
+.p-selectbutton .p-button.p-highlight {
+  background-color: $mainColor;
+  color: white;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: white;
+    color: $mainColor;
+    border-color: $mainColor;
+  }
+}
+.p-dataview-content .p-grid .p-skeleton,
+.p-dataview-content .p-grid img {
+  width: 10rem !important;
+  height: 13rem !important;
+}
+.p-dataview-emptymessage{
+    min-height: 100vh;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin: 30px;
+    color:#721c24;
+}
+// ============== Tooltip ==============
+.p-tooltip-text {
+  font-family: $mainFont;
+  font-size: 14px;
+}
+// ================ tag ==========
+.p-tag-value {
+  font-family: $mainFont;
+}
+// ================ product Details galleria ========
+app-product-details {
+  .p-galleria-content {
+    -webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2),
+      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2),
+      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 10px;
+    background: #fff;
+    .p-galleria-item {
+      img {
+        border-radius: 10px;
+      }
+    }
+  }
+}
+.p-breadcrumb-chevron svg:lang(ar) {
+  rotate: 180deg;
+}
+.p-breadcrumb-chevron svg:lang(en) {
+  rotate: 0deg;
+}
+.p-breadcrumb {
+  border: 0px solid #dee2e6;
+}
+.p-component {
+  font-family: "Tajawal", sans-serif !important;
+}
+// ================ Categories Cards ========
+.p-card-body {
+  text-align: center;
+  margin-bottom: 0;
+}
+.p-card-content {
+  display: none;
+}
+app-categories {
+  .p-card .p-card-title {
+    color: $mainColor;
+  }
+}
+// ================ All Categories Cards ========
+app-all-categories {
+    p-carousel{
+        direction: ltr !important;
+    }
+  .card {
+    border: unset !important;
+    margin: 30px 0;
+  }
+}
+// ================ All Products Cards ========
+app-all-products,
+app-all-products-on-sub-category{
+    .card {
+        border: unset !important;
+        margin: 10px 0;
+      }
+}
+// =============== All Sub Category Cards ========
+app-subCategories,
+app-sub-category-details,
+app-all-sub-category-on-category{
+  .p-card{
+    .p-card-title{
+      color: $mainColor;
+    }
+     .p-card-body{
+      background-color: #bcd6ea;
+     }
+  }
+}
+// ===== Brand Card ========
+app-brands {
+  .p-card .p-card-title {
+    color: $mainColor;
+  }
+}

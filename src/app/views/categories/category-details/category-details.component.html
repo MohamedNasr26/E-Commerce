@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row justify-content-center" *ngIf="categoryItem ; else noData">
+        <div class="col-12">
+            <h1 class="text-center text-xl font-bold mt-5">
+                {{'CATEGORIES.CATEGORY_DETAILS'|translate}}
+            </h1>
+        </div>
+        <div class="col-12 sm:col-6 lg:col-5 xl:col-5">
+            <a [routerLink]="['/categories',categoryId,'subcategories']">
+                <div class="card flex justify-content-center">
+                    <p-card [header]="categoryItem?.name">
+                        <ng-template pTemplate="header">
+                            <img alt="Card" [src]="categoryItem?.image" />
+                        </ng-template>
+                    </p-card>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<ng-template #noData>
+    <app-data-not-found></app-data-not-found>
+</ng-template>

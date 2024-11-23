@@ -1,0 +1,99 @@
+<div class="container-fluid" *ngIf="userOrders.length > 0 ; else noData">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <h1 class="text-center text-xl font-bold mt-5">
+                {{'ORDERS.TITLE'|translate}}
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p-table [value]="userOrders" dataKey="id" styleClass="p-datatable-striped"
+                [tableStyle]="{'min-width': '60rem'}">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 8rem">{{'ORDERS.ORDER_NUMBER'|translate}}</th>
+                        <th>{{'ORDERS.ORDER_ITEMS'|translate}}</th>
+                        <th>{{'ORDERS.ORDER_DATE'|translate}}</th>
+                        <th>{{'ORDERS.DILIVER_STATUS'|translate}}</th>
+                        <th>{{'ORDERS.PAYED_STATUS'|translate}}</th>
+                        <th>{{'ORDERS.ORDER_TOTAL_PRICE'|translate}}</th>
+                        <th>{{'ORDERS.ORDER_SHIPPING_DETAILS'|translate}}</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product let-expanded="expanded">
+                    <tr>
+                        <td>{{product.id}}</td>
+                        <td>
+                            <button type="button" pButton pRipple [pRowToggler]="product"
+                                class="bg-primary p-button-text p-button-rounded p-button-plain"
+                                [icon]="expanded ? 'pi pi-minus' : 'pi pi-plus'">
+                            </button>
+                        </td>
+                        <td>{{product.createdAt | date}}</td>
+                        <td>{{product.isDelivered ? 'ORDERS.DELIVER_STATUS_confirmed':'ORDERS.DELIVER_STATUS_NOT_CONFIRMED' |translate}}</td>
+                        <td [ngClass]="product.isPaid ? 'success':'danger'">{{product.isPaid ? ('ORDERS.PAYED_CONFIRMED' |translate):('ORDERS.NOT_PAYED' |translate)}}</td>
+                        <td>{{product.totalOrderPrice | currency :'EGY' :"symbol" : '1.0-0'}}</td>
+                        <td>
+                            <p-button (onClick)="showDialog(product.shippingAddress, product.id)" icon="pi pi-address-book" label="" />
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="rowexpansion" let-product>
+                    <tr>
+                        <td colspan="7">
+                            <p-table class="nestedTable" [value]="product.cartItems" dataKey="id">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th style="width: 8rem">{{'ORDERS.PRODUCT_IMAGE'|translate}}</th>
+                                        <th>{{'ORDERS.PRODUCT_NAME'|translate}}</th>
+                                        <th>{{'ORDERS.PRODUCT_CATEGORY'|translate}}</th>
+                                        <th>{{'ORDERS.PRODUCT_QUANTITY'|translate}}</th>
+                                        <th>{{'ORDERS.PRODUCT_RATING'|translate}}</th>
+                                        <th>{{'ORDERS.ORDER_ITEM_PRICE'|translate}}</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-order>
+                                    <tr>
+                                        <td><img src="{{order.product.imageCover}}" class="w-full productImg"> </td>
+                                        <td>{{order.product.title}}</td>
+                                        <td>{{order.product.category.name}}</td>
+                                        <td>{{order.count}}</td>
+                                        <td>{{order.product.ratingsAverage}}</td>
+                                        <td>{{order.price | currency :'EGY' :"symbol" : '1.0-0'}}</td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="emptymessage">
+                                    <tr>
+                                        <td colspan="6">There are no order for this product yet.</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="{{'ORDERS.ADDRESS_DETAILS_ORDER_NUMBER'|translate}} {{shippingAddress.orderId}}" [modal]="true" [(visible)]="visible" [style]="{ width: '35rem' }">
+    <table>
+        <tr>
+            <th>{{'ORDERS.ADREESS'|translate}}</th>
+            <td>{{shippingAddress.details}}</td>
+        </tr>
+        <tr>
+            <th>{{'ORDERS.CITY'|translate}}</th>
+            <td>{{shippingAddress.city}}</td>
+        </tr>
+        <tr>
+            <th>{{'ORDERS.PHONE'|translate}}</th>
+            <td>{{shippingAddress.phone}}</td>
+        </tr>
+    </table>
+</p-dialog>
+
+<ng-template #noData>
+    <app-data-not-found></app-data-not-found>
+</ng-template>

@@ -1,0 +1,143 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Google Fonts in Arabic And English
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+
+// Primeng
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+// Primeng Icons
+@import "primeicons/primeicons.css";
+
+$mainColor: #0077b6;
+$lightColor: #f7f7f7;
+$orangeColor: #ec6449;
+$mainFont: "Tajawal", sans-serif !important;
+$colors: (
+  "main": #0077b6,
+  "light": #f7f7f7,
+);
+
+@each $key, $value in $colors {
+  .text-#{$key} {
+    color: $value;
+  }
+
+  .bg-#{$key} {
+    background-color: $value !important;
+  }
+
+  .border-#{$key} {
+    border-color: $value !important;
+  }
+}
+
+body {
+  min-height: 100vh !important;
+  font-family: "Tajawal", sans-serif !important;
+}
+
+body:lang(en) {
+  direction: ltr;
+  letter-spacing: 1px;
+}
+
+body:lang(ar) {
+  direction: rtl;
+}
+
+a {
+  text-decoration: none !important;
+  color: unset !important;
+  &:hover {
+    cursor: pointer !important;
+  }
+}
+
+.btn-main {
+  background-color: $mainColor !important;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+  font-family: $mainFont !important;
+
+  &:hover {
+    background-color: white !important;
+    color: $mainColor !important;
+    border-color: $mainColor !important;
+  }
+}
+.pointerCard:hover {
+  cursor: pointer !important;
+}
+// ------------ Confimation Dialog --------------
+.p-dialog.p-confirm-dialog .p-confirm-dialog-message:lang(ar) {
+  margin-left: unset !important;
+  margin-right: 1rem !important;
+}
+.p-dialog.p-confirm-dialog .p-confirm-dialog-message:lang(en) {
+  margin-right: unset !important;
+  margin-left: 1rem !important;
+}
+//---------------- Orders ----------------
+app-orders {
+  .p-datatable .p-datatable-thead > tr > th,
+  .p-datatable .p-datatable-tbody > tr > td {
+    text-align: center !important;
+  }
+  .p-datatable .p-datatable-thead > tr > th {
+    padding: 1rem 1rem !important;
+    background-color: $mainColor;
+    color: #fff;
+  }
+  .p-datatable .p-datatable-tbody > tr > td {
+    padding: 6px 10px !important;
+  }
+  .p-button.p-button-icon-only{
+    padding: 0.5rem 0 !important;
+    background-color: $mainColor !important;
+    color: #fff;
+  }
+  .nestedTable .p-datatable-thead th{
+    color: #004085 !important;
+    background-color: #cce5ff !important;
+    border-color: #b8daff !important;
+  }
+  .p-dialog-draggable .p-dialog-header{
+    background-color: $mainColor !important;
+    padding: 10px !important;
+    color: #fff;
+  }
+  .p-dialog .p-dialog-header .p-dialog-header-icon:last-child{
+    background-color: #fff;
+  }
+  .p-dialog .p-dialog-content{
+    padding: 0 !important;
+    background-color: #fff !important;
+    table{
+        width:-webkit-fill-available;
+        margin:20px;
+        border: 1px solid $mainColor;
+        text-align: center;
+        tr{
+            border-bottom: 1px solid $mainColor;
+            th{
+                padding:10px;
+                color: #fff;
+                width: 30%;
+                background-color: $mainColor !important;
+            }
+            td{
+                width: 70%;
+                padding: 10px;
+            }
+        }
+    }
+  }
+}

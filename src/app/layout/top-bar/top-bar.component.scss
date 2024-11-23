@@ -1,0 +1,96 @@
+/* Topbar styles */
+@import "./../../../styles.scss";
+
+.topbar {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    .items {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        color: #333;
+
+        .topbar-item1,
+        .topbar-item2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .topbar-item1 a:last-of-type:lang(ar),
+        .topbar-item1 a:first-of-type:lang(en),
+        .topbar-item2 a:last-of-type:lang(ar),
+        .topbar-item2 a:first-of-type:lang(en) {
+            border-left: 1px solid #ddd;
+        }
+
+        a{
+            color: #333;
+            text-decoration: none;
+            margin-right: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            border-right: 1px solid #ddd;
+
+            &:hover {
+                color: $mainColor;
+            }
+            @media (max-width: 768px) {
+                &{
+                    padding: 8px 2px !important;
+                }
+            }
+            .badge {
+                background-color: #0077b6;
+                color: #fff;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                font-size: 12px;
+                display: flex;
+                justify-content: center;
+            }
+            .badge:lang(ar) {
+                margin-right: 5px;
+            }
+
+            .badge:lang(en) {
+                margin-left: 5px;
+            }
+
+            img {
+                max-height: 20px;
+            }
+
+            img:lang(ar) {
+                margin-left: 5px;
+            }
+
+            img:lang(en) {
+                margin-right: 5px;
+            }
+        }
+        button{
+            background: transparent !important;
+            border: none !important;
+
+            &:hover{
+                color: $mainColor;
+            }
+        }
+        a.login-register {
+            font-weight: bold;
+        }
+    }
+}

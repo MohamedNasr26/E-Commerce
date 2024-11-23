@@ -1,0 +1,9 @@
+<p-galleria [value]="sliderImages" [circular]="true" [autoPlay]="true" [transitionInterval]="3000"
+    [showIndicators]="false" [showThumbnails]="false" [changeItemOnIndicatorHover]="true"
+    [responsiveOptions]="responsiveOptions" [showItemNavigators]="true" >
+
+    <ng-template pTemplate="item" let-item>
+        <img [src]="item"/>
+    </ng-template>
+
+</p-galleria>

@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row justify-content-center" *ngIf="brandItem ; else noData">
+        <div class="col-12">
+            <h1 class="text-center text-xl font-bold mt-5">
+                {{'CATEGORIES.BRAND_DETAILS'|translate}}
+            </h1>
+        </div>
+        <div class="col-12 sm:col-6 lg:col-5 xl:col-5">
+            <div class="card flex justify-content-center">
+                <p-card [header]="brandItem?.name">
+                    <ng-template pTemplate="header">
+                        <img alt="Card" [src]="brandItem?.image" />
+                    </ng-template>
+                </p-card>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #noData>
+    <app-data-not-found></app-data-not-found>
+</ng-template>

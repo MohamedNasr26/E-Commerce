@@ -1,0 +1,102 @@
+@import "./../../../styles.scss";
+.wishListBox {
+  background-color: rgba($color: $mainColor, $alpha: 0.3);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 0;
+  border-radius: 10px;
+  .wishListHead {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $mainColor;
+    padding: 15px 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    h4 {
+      font-weight: 600;
+      margin-bottom: 0;
+      font-size: 20px;
+      color: #fff;
+    }
+  }
+  .wishList-table {
+    overflow: auto;
+    .wishList-row {
+      padding: 10px 0;
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+      border-radius: 5px;
+
+      &:nth-child(even) {
+        background: #efefef;
+        border-radius: 5px;
+      }
+      &:nth-child(odd) {
+        background: #e3e3e3;
+      }
+      &:last-child {
+        padding-bottom: 10px;
+      }
+      .productImg {
+        border-radius: 10px;
+        max-width: 75%;
+      }
+      .product-name {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .product-price {
+        color: #666;
+        font-weight: 300;
+        font-size: 20px;
+        margin: 0;
+        padding: 0;
+        line-height: initial;
+      }
+
+      .wishList-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+          }
+      }
+    }
+  }
+  .wishListFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    background-color: $mainColor;
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    button {
+      border-radius: 5px;
+    }
+  }
+}
+.alert {
+  margin: 0;
+  border-radius: 0;
+  text-align: center;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,57 @@
+<div class="login">
+    <div class="container p-0">
+        <div class="welcome-box">
+            <h2>{{'LOGIN.WELCOME_TITLE'|translate}}</h2>
+            <p>{{'LOGIN.WELCOME_DESC'|translate}}</p>
+            <a routerLink="/register" class="btn-main">{{'FORM.SIGN_UP'|translate}}<i class="pi pi-user-plus mx-1"></i></a>
+        </div>
+        <div class="input-box">
+            <h1>{{'LOGIN.SIGN_IN_TO_HAYAH_STORE'|translate}}</h1>
+            <div class="social-login">
+                <a href="https://www.facebook.com/elzamalkawy263" target="_blank" class="social-btn facebook-btn">
+                    <i class="pi pi-globe"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mohamed-nasr-143ba3327/" target="_blank" class="social-btn linkedin-btn">
+                    <i class="pi pi-linkedin"></i>
+                </a>
+                <a href="https://github.com/MohamedNasr26" target="_blank" class="social-btn github-btn">
+                    <i class="pi pi-github"></i>
+                </a>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+                <div class="form-group">
+                    <span [ngClass]="lang=='ar'?'p-input-icon-right':'p-input-icon-left'" class="p-float-label">
+                        <i class="pi pi-envelope"></i>
+                        <input type="email" pInputText pAutoFocus [autofocus]="true" id="email" formControlName="email" />
+                        <label htmlFor="email">{{'FORM.EMAIL'|translate}}</label>
+                    </span>
+                    <div class="alert alert-danger mb-1 p-0" *ngIf="form['email']?.errors && (form['email']?.dirty || form['email']?.touched)">
+                        <ul class="mb-0">
+                            <li *ngIf="form['email']?.errors?.['required']">{{'FORM.VALIDATORS.REQUIRED' |translate}}</li>
+                            <li *ngIf="form['email']?.errors?.['email']">{{'FORM.VALIDATORS.NOT_VALID_EMAIL' |translate}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span [ngClass]="lang=='ar'?'p-input-icon-right':'p-input-icon-left'" class="p-float-label">
+                        <i class="pi pi-lock"></i>
+                        <p-password id="password" formControlName="password"  [toggleMask]="true"></p-password>
+                        <label htmlFor="password">{{'FORM.PASSWROD'|translate}}</label>
+                    </span>
+                    <div class="alert alert-danger mb-1 p-0" *ngIf="form['password']?.errors && (form['password']?.dirty || form['password']?.touched)">
+                        <ul class="mb-0">
+                            <li *ngIf="form['password']?.errors?.['required']">{{'FORM.VALIDATORS.REQUIRED' |translate}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="forgot-password d-flex justify-content-end">
+                    <a routerLink="/forgotPassword">{{'FORM.FORGET_PASSWORD'|translate}}</a>
+                </div>
+                <button type="submit" class="btn btn-main" [disabled]="loginForm.invalid || isLoading">
+                    {{'FORM.SIGN_IN'|translate}}
+                    <i *ngIf="isLoading" class="pi pi-spin pi-spinner mx-1"></i><i *ngIf="!isLoading" class="pi pi-sign-in mx-1"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<p-confirmDialog />
+<div class="container cartBox">
+    <div class="cartHead" *ngIf="cartItems.length > 0">
+        <div class="cart-title">
+            <h4 style="font-weight:500">{{'CART.TITLE'|translate}}</h4>
+            <h6>{{'CART.CART_TOTAL_PRICE'|translate}} :<span>( {{totalCartPrice | currency :"EGP" :"symbol" : '1.0-0'}}
+                    )</span></h6>
+        </div>
+        <div class="cart-remove">
+            <button class="btn btn-danger" (click)="confirm($event)">{{'CART.CLEAR_CART'|translate}}<i
+                    class="pi pi-trash mx-1"></i> </button>
+        </div>
+    </div>
+
+    <div class="cart-table" *ngIf="cartItems.length > 0 ; else emptyCart">
+        <div class="row cart-row" *ngFor="let item of cartItems;">
+
+            <div class="col-xs-12 col-md-1 d-flex justify-content-center align-items-center">
+                <img class="productImg w-full" [src]="item.product.imageCover" [alt]="item.product.title" />
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="product-name">{{ item.product.title }}</div>
+                <p-rating [(ngModel)]="item.product.ratingsAverage" [readonly]="true" [cancel]="false"></p-rating>
+                <div class="product-price"><small>{{item.price | currency :'EGY' :"symbol" : '1.0-0'}}</small></div>
+            </div>
+            <div class="col-xs-12 col-md-3">
+                <div class="product-count">
+                    <button class="btn d-flex justify-content-center align-items-center"
+                        (click)="UpdateCartProductQuantity(item.product.id,item.count+1)"><i class="pi pi-plus"></i></button>
+                    <input type="text" readonly [value]="item.count" size="1" class="form-control">
+                    <button class="btn d-flex justify-content-center align-items-center"
+                        (click)="UpdateCartProductQuantity(item.product.id,item.count-1)"><i class="pi pi-minus"></i></button>
+                </div>
+                <div class="product-total-price"><small>{{item.price * item.count | currency :'EGY' :"symbol" : '1.0-0'}}</small></div>
+            </div>
+            <div class="col-xs-12 col-md-2 cart-actions">
+                <div class="product-delete">
+                    <button type="button" class="btn btn-danger" (click)="removeItem(item.product.id);"
+                        pTooltip="{{'CART.REMOVE_FROM_CART'|translate}}" tooltipPosition="top" placeholder="Top"><i
+                            class="pi pi-trash fs-5 mx-1"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cartFooter">
+        <button *ngIf="cartItems.length > 0" class="btn btn-success" (click)="checkout()">{{'CART.CHECKOUT'|translate}}
+            <i class="pi pi-wallet mx-1"></i></button>
+        <button class="btn btn-secondary" type="button" (click)="contiueShopping()">
+            {{'CART.CONTINUE_SHOPPING'|translate}} <i class="pi"
+                [ngClass]="lang=='ar'?'pi-arrow-left':'pi-arrow-right'"></i></button>
+    </div>
+</div>
+
+<ng-template #emptyCart>
+    <div class="alert alert-warning" role="alert">
+        <h5>
+            <i class="pi pi-shopping-cart fs-5"></i>
+            {{'CART.CART_EMPTY_MESSAGE'|translate}}
+        </h5>
+    </div>
+</ng-template>

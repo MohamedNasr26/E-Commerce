@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+    <div class="container">
+      <a class="navbar-brand" routerLink="home">
+        <img src="./assets/imges/navbar/logo.png" alt="Logo Img" title="{{'GENERAL.APP_NAME'|translate}}">
+        <span class="app-name">{{'GENERAL.APP_NAME'|translate}}</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="isLogin">
+        <ul [ngClass]="lang=='ar'?'me-auto':'ms-auto'" class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/home" routerLinkActive="navActive">{{'NAVBAR.HOME' | translate}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/categories" routerLinkActive="navActive">{{'NAVBAR.CATEGORIES' | translate}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/subCategories" routerLinkActive="navActive">{{'NAVBAR.SUBCATEGORIES' | translate}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/brands" routerLinkActive="navActive">{{'NAVBAR.BRANDS' | translate}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/products" routerLinkActive="navActive">{{'NAVBAR.PRODUCTS' | translate}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/allorders" routerLinkActive="navActive">{{'NAVBAR.ORDERS' | translate}}</a>
+          </li>
+        </ul>
+
+        <ul [ngClass]="lang=='ar'?'me-auto':'ms-auto'" class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link cart" aria-current="page" routerLink="cart">
+                  <img src="./assets/imges/navbar/cart.svg" alt="Cart Img" title="Cart">
+                  <span class="badge">{{cartItemCount}}</span>
+              </a>
+            </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>

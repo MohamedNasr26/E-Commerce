@@ -1,0 +1,53 @@
+<div class="login checkout">
+    <div class="container p-0">
+        <div class="input-box">
+            <h1>{{'CART.ADDRESS_DETAILS'|translate}}</h1>
+            <form [formGroup]="checkoutForm">
+                <div class="form-group">
+                    <span [ngClass]="lang=='ar'?'p-input-icon-right':'p-input-icon-left'" class="p-float-label">
+                        <i class="pi pi-address-book"></i>
+                        <input type="text" pInputText pAutoFocus [autofocus]="true" id="details" formControlName="details" />
+                        <label htmlFor="details">{{'CART.DETAILS'|translate}}</label>
+                    </span>
+                    <div class="alert alert-danger mb-1 p-0" *ngIf="checkoutForm.controls.details?.errors && (checkoutForm.controls.details?.dirty || checkoutForm.controls.details?.touched)">
+                        <ul class="mb-0">
+                            <li *ngIf="checkoutForm.controls.details?.errors?.['required']">{{'FORM.VALIDATORS.REQUIRED' |translate}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span [ngClass]="lang=='ar'?'p-input-icon-right':'p-input-icon-left'" class="p-float-label">
+                        <i class="pi pi-mobile"></i>
+                        <input type="text" pInputText id="phone" formControlName="phone" />
+                        <label htmlFor="phone">{{'CART.PHONE'|translate}}</label>
+                    </span>
+                    <div class="alert alert-danger mb-1 p-0" *ngIf="checkoutForm.controls.phone?.errors && (checkoutForm.controls.phone?.dirty || checkoutForm.controls.phone?.touched)">
+                        <ul class="mb-0">
+                            <li *ngIf="checkoutForm.controls.phone?.errors?.['required']">{{'FORM.VALIDATORS.REQUIRED' |translate}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span [ngClass]="lang=='ar'?'p-input-icon-right':'p-input-icon-left'" class="p-float-label">
+                        <i class="pi pi-map-marker"></i>
+                        <input type="text" pInputText id="city" formControlName="city" />
+                        <label htmlFor="city">{{'CART.CITY'|translate}}</label>
+                    </span>
+                    <div class="alert alert-danger mb-1 p-0" *ngIf="checkoutForm.controls.city?.errors && (checkoutForm.controls.city?.dirty || checkoutForm.controls.city?.touched)">
+                        <ul class="mb-0">
+                            <li *ngIf="checkoutForm.controls.city?.errors?.['required']">{{'FORM.VALIDATORS.REQUIRED' |translate}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <button (click)="CreateCashOrder()" type="button" class="btn btn-main" [disabled]="checkoutForm.invalid || isLoading">
+                    {{'CART.CASH_ON_DELIVERY'|translate}}
+                    <i *ngIf="isLoading" class="pi pi-spin pi-spinner mx-1"></i><i *ngIf="!isLoading" class="pi pi-money-bill mx-1"></i>
+                </button>
+                <button (click)="CheckoutSession()" type="button" class="btn btn-main" [disabled]="checkoutForm.invalid || isLoading">
+                    {{'CART.PAY_BY_VISA'|translate}}
+                    <i *ngIf="isLoading" class="pi pi-spin pi-spinner mx-1"></i><i *ngIf="!isLoading" class="pi pi-credit-card mx-1"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

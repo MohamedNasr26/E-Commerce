@@ -1,0 +1,15 @@
+.alert-warning {
+    min-height: 66vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  h3 {
+    min-height: fit-content;
+    color: #856404;
+    background-color: #fff3cd;
+    padding: 40px 80px;
+    margin: 0;
+    border-style: dashed;
+    border-radius: 5px;
+  }
+}

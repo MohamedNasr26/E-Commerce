@@ -1,0 +1,10 @@
+<div>
+    <p-toast></p-toast>
+    <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"></ngx-spinner>
+    <app-top-bar></app-top-bar>
+    <app-navbar *ngIf="isLogin"></app-navbar>
+</div>
+<div class="main-body">
+    <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

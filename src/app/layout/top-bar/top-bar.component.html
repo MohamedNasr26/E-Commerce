@@ -1,0 +1,35 @@
+<nav class="topbar sticky-top">
+    <div class="container">
+        <div class="items">
+            <div class="topbar-item1">
+                <a routerLink="login" class="login-register" *ngIf="!isLogin">
+                    <img src="./assets/imges/topbar/user.svg">
+                    <span>{{'TOPBAR.LOGIN_REGISTER' | translate}}</span>
+                </a>
+                <button (click)="signOut()" class="logout" *ngIf="isLogin">
+                    <img src="./assets/imges/topbar/logout.svg">
+                    <span>{{'TOPBAR.LOGOUT' | translate}}</span>
+                </button>
+                <a routerLink="wishlist" class="wishlist" *ngIf="isLogin">
+                    <img src="./assets/imges/topbar/heart.svg">
+                    <span>{{'TOPBAR.WISHLIST' | translate}}</span>
+                    <span class="badge">{{wishListItemmCount}}</span>
+                </a>
+                <a routerLink="contact" class="help d-none d-md-block">
+                    <img src="./assets/imges/topbar/info.svg">
+                    <span>{{'TOPBAR.HELP' | translate}}</span>
+                </a>
+            </div>
+            <div class="topbar-item2">
+                <a href="https://maps.app.goo.gl/XkFprnnoPvToT3fq8" target="_blank" class="locations  d-none d-md-block">
+                    <img src="./assets/imges/topbar/location.svg">
+                    <span>{{'TOPBAR.LOCATION' | translate}}</span>
+                </a>
+                <a href="javascript:;" (click)="setLanguage()" class="language">
+                    <img src="./assets/imges/topbar/translate.svg">
+                    {{'GENERAL.LANGUAGE' | translate}}
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
